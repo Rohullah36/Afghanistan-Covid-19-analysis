@@ -17,7 +17,7 @@ covi-main/ ? ??? data/          # Raw and cleaned datasets ??? scripts/       # 
 
 1. Clone this repository:  
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
+   git clone https://github.com/<your-username>/<repo-name>](https://github.com/Rohullah36/Afghanistan-Covid-19-analysis.git
 ```
 
 ## install dependencies
@@ -40,4 +40,5 @@ Run the notebooks or scripts in the `scripts/` folder to see the visualizations.
 This project is open for personal or educational use.
 
 ## Conclusion
+
 This project demonstrates data cleaning, visualization using python.
