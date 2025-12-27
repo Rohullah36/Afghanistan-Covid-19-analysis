@@ -2,6 +2,7 @@
 This project focuses on **cleaning, processing, and visualizing COVID-19 data** related to Afghanistan. It is built using **Python** and **Pandas**, with a clear folder organization for data, scripts, and requirements.  
 
 ## Project Structure
+'''
 covi-main/
 ├── data/               # Raw and cleaned datasets
 │   ├── raw/            # Original unprocessed data
@@ -15,6 +16,7 @@ covi-main/
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Project overview and instructions
 └── .gitignore          # Files/folders to ignore in Git
+'''
 
 
 ## Features
@@ -53,5 +55,6 @@ This project is open for personal or educational use.
 ## Conclusion
 
 This project demonstrates data cleaning, visualization using python.
+
 
 
