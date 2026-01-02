@@ -1,6 +1,12 @@
 ## Afghanistan COVID-19 Analysis
 This project focuses on **cleaning, processing, and visualizing COVID-19 data** related to Afghanistan. It is built using **Python** and **Pandas**, with a clear folder organization for data, scripts, and requirements.  
 
+This dataset was cleaned by:
+- Removing duplicate rows
+- Filling missing values
+- Fixing data types
+- Validating province names
+  
 ## Project Structure
 
 ''' covi-main/
@@ -51,9 +57,25 @@ Run the notebooks or scripts in the `scripts/` folder to see the visualizations.
 ## License
 This project is open for personal or educational use.
 
-## Conclusion
-
 This project demonstrates data cleaning, visualization using python.
+### Data Cleaning Summary
+This dataset was cleaned by:
+- Removing duplicate rows
+- Filling missing values
+- Fixing data types
+- Validating province names
+
+### Data Quality Issues
+Despite cleaning, the dataset contains inconsistencies:
+- Deaths exceed cases in many rows
+- Recoveries are unrealistically high
+- No rows remain valid after strict validation
+
+### Conclusion
+This repository demonstrates the cleaning process, but the dataset itself is unreliable for analysis. 
+For accurate COVID-19 data, please refer to WHO, Johns Hopkins University, or Our World in Data.
+
+
 
 
 
