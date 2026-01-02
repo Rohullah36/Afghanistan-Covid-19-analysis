@@ -6,6 +6,7 @@ This dataset was cleaned by:
 - Filling missing values
 - Fixing data types
 - Validating province names
+- Removing outliers
   
 ## Project Structure
 
@@ -74,6 +75,7 @@ Despite cleaning, the dataset contains inconsistencies:
 ### Conclusion
 This repository demonstrates the cleaning process, but the dataset itself is unreliable for analysis. 
 For accurate COVID-19 data, please refer to WHO, Johns Hopkins University, or Our World in Data.
+
 
 
 
