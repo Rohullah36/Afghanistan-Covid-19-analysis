@@ -90,27 +90,8 @@ for col in numeric_cols:
         df[col] = df[col].fillna(overall_med)
 
 # --- Fix Recoveries consistency ---
-# Ensure 0 <= Recoveries <= Cases - Deaths when Cases and Deaths are present
-if set(["Cases", "Deaths", "Recoveries"]).issubset(df.columns):
-    # Fill any remaining Recoveries NaNs (safety): use province median fallback already done above
-    # Compute max possible recoveries per row
-    max_rec = (df["Cases"] - df["Deaths"])
-    # cap negative max_rec to 0 (can't have negative possible recoveries)
-    max_rec = max_rec.clip(lower=0)
-    # For rows where max_rec is not NaN, cap recoveries to max_rec
-    mask_has_bound = ~max_rec.isna()
-    if mask_has_bound.any():
-        # Count how many will be capped
-        too_large = (df.loc[mask_has_bound, "Recoveries"] > max_rec.loc[mask_has_bound]).sum()
-        df.loc[mask_has_bound, "Recoveries"] = df.loc[mask_has_bound, "Recoveries"].clip(lower=0, upper=max_rec.loc[mask_has_bound])
-    else:
-        too_large = 0
-    # Any negative recoveries (where max_rec was NaN or otherwise) set to 0
-    neg_count = (df["Recoveries"] < 0).sum()
-    df.loc[df["Recoveries"] < 0, "Recoveries"] = 0
-    print(f"Recoveries adjusted: capped_too_large={int(too_large)}, negatives_clipped={int(neg_count)}")
-else:
-    print("Skipping recoveries consistency (missing Cases/Deaths/Recoveries columns).")
+df['Recoveries'] = df['Cases'] - df['Deaths']
+df['Recoveries'] = df['Recoveries'].clip(lower=0)
 
 # --- Remove outliers using IQR rule (drop rows outside bounds) ---
 # We'll drop rows that are outliers in any of the numeric columns listed (but keep rows where the column is NaN)
@@ -144,3 +125,4 @@ if "Date" in df.columns:
 # Save cleaned data
 df.to_csv(OUTPUT, index=False)
 print("Saved cleaned data to", OUTPUT)
+
