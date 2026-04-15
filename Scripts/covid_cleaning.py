@@ -60,7 +60,7 @@ def clean_province_name(name):
 if "Province" in df.columns:
     df["Province"] = df["Province"].apply(clean_province_name)
 
-# Apply your corrections mapping
+
 province_corrections = {
     'Jawzjon': 'Jawzjan',
     'Herat': 'Hirat',
@@ -81,9 +81,9 @@ for col in numeric_cols:
         continue
     overall_med = df[col].median()
     if "Province" in df.columns:
-        # transform returns per-row aligned series of group medians
+        
         group_med = df.groupby("Province")[col].transform("median")
-        # fallback to overall median where group median is NaN
+        
         group_med = group_med.fillna(overall_med)
         df[col] = df[col].fillna(group_med)
     else:
@@ -92,8 +92,7 @@ for col in numeric_cols:
 # --- Fix Recoveries consistency ---
 df['Recoveries'] = df['Cases'] - df['Deaths']
 
-# --- Remove outliers using IQR rule (drop rows outside bounds) ---
-# We'll drop rows that are outliers in any of the numeric columns listed (but keep rows where the column is NaN)
+# --- Remove outliers using IQR 
 outlier_cols = [c for c in numeric_cols if c in df.columns]
 if outlier_cols:
     mask = pd.Series(True, index=df.index)
@@ -102,11 +101,11 @@ if outlier_cols:
         Q3 = df[col].quantile(0.75)
         IQR = Q3 - Q1
         if pd.isna(IQR) or IQR == 0:
-            # If there's no variability, don't exclude rows by this column
+            
             continue
         lower = Q1 - 1.5 * IQR
         upper = Q3 + 1.5 * IQR
-        # Keep rows where value is between bounds OR is NaN (so missing stays)
+        
         mask &= df[col].between(lower, upper) | df[col].isna()
     before = len(df)
     df = df[mask].reset_index(drop=True)
@@ -116,7 +115,7 @@ if outlier_cols:
 else:
     print("No numeric columns found to apply outlier removal.")
 
-# --- Clean column names lightly (just strip spaces) and sort by Date if present ---
+# Clean column names
 df.columns = df.columns.str.strip()
 if "Date" in df.columns:
     df = df.sort_values(by="Date").reset_index(drop=True)
