@@ -10,7 +10,7 @@ This dataset was cleaned by:
   
 ## Project Structure
 
-''' covi-main/
+``` covi-main/
 ├── data/               # Raw and cleaned datasets
 │   ├── raw/            # Original unprocessed data
 │   └── processed/      # Cleaned and transformed data
@@ -23,7 +23,7 @@ This dataset was cleaned by:
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Project overview and instructions
 └── .gitignore          # Files/folders to ignore in Git 
-'''
+```
 
 
 ## Features
