@@ -22,7 +22,8 @@ This dataset was cleaned by:
 │
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Project overview and instructions
-└── .gitignore          # Files/folders to ignore in Git '''
+└── .gitignore          # Files/folders to ignore in Git 
+'''
 
 
 ## Features
